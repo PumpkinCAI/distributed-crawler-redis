@@ -11,7 +11,8 @@ from redis_queue import Queue
 monkey.patch_all()
 
 class Task(object):
-    '''scheduler: pull project script, pull queue data, call the script function to process data'''
+    '''scheduler: pull project script, pull queue data, 
+                call the script function to process data'''
     def __init__(self, project_name):
         self.status_channel = '%s_status' %project_name
         self.stop_flag = 0
@@ -40,9 +41,9 @@ class Task(object):
         '''slow mode: worknum=1, sleep_interval=N
                     every worker is blocking, sleep N seconds;
            fast mode: worknum=N
-                    every worker is non-blocking, using gevent concurrent 
-                    pool
-           queue_num: number of queues. redis queue is slow when queue size > 100000, so a list of queues is needed for big data.
+                    every worker is non-blocking, using gevent concurrent pool
+           queue_num: number of queues. redis queue is slow when queue size > 100000, 
+                     so a list of queues is needed for big data.
            pull_size: pull N items for consumer.
            '''
         try:

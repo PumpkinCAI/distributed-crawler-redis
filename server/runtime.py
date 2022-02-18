@@ -4,8 +4,8 @@ class Runtime(object):
     '''global data'''
     _instance = None
     running_task = {}
-    local_ip = str(socket.gethostbyname_ex(socket.gethostname())[2][0]) #get ip of the machine
-
+     #get ip of the node
+    local_ip = str(socket.gethostbyname_ex(socket.gethostname())[2][0]) 
     def __init__(self):
         pass
 
