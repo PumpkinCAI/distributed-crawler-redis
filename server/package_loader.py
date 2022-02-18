@@ -36,6 +36,3 @@ def find_main_class(module):
     for obj in vars(module).values():
         if inspect.isclass(obj) and getattr(obj, 'name', None):
             return obj
-
-if __name__=='__main__':
-    load_package('local', 'start_script_sample.py')

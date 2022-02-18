@@ -78,5 +78,6 @@ if __name__ == '__main__':
     queue_num = 2
     data_to_queue('./input.txt', queue_num = queue_num)
     Publisher().start(project_name, worknum=3,  \
-                 queue_num=queue_num, pull_size=2)
+                 queue_num=queue_num, pull_size=2, \
+                 ips=None)
 

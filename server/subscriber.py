@@ -62,13 +62,14 @@ class Subscriber(object):
                 gevent.spawn(task.stop)
             elif do_action == 'status':
                 gevent.spawn(task.status)
-            #gevent 进行非租塞调度
+            #gevent 进行非阻塞调度
             gevent.getswitchinterval()
 
     def _extract(self, data):
         ips = data.get('ips')
         is_assigned = 1
-        if ips and Runtime().local_ip not in ips: #检查本机IP在不在任务IP中
+        #检查本机IP在不在任务IP中
+        if ips and Runtime().local_ip not in ips: 
             is_assigned = 0
         project_name = data['project']
         if not project_name:
