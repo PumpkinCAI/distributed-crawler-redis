@@ -18,13 +18,18 @@ class Publisher(object):
         '''slow mode: worknum=1, sleep_interval=N
                     every worker is blocking, sleep N seconds;
            fast mode: worknum=N
-                    every worker is non-blocking, using gevent concurrent
-                    pool
-           queue_num: number of queues. redis queue is slow when queue size > 100000, so a list of queues is needed for big data.
+                    every worker is non-blocking, using gevent concurrent pool
+           queue_num: number of queues. redis queue is slow when queue size > 100000, 
+                      so a list of queues is needed for big data.
            pull_size: pull N items for consumer.
            '''
         action = 'restart'
-        data = {'project': project_name,'action': action, 'worknum': worknum, 'sleep_interval': sleep_interval, 'queue_num': queue_num, 'pull_size': pull_size}
+        data = {'project': project_name,
+                'action': action, 
+                'worknum': worknum,
+                'sleep_interval': sleep_interval, 
+                'queue_num': queue_num, 
+                'pull_size': pull_size}
         self.publish(data)
 
     def stop(self, project_name):

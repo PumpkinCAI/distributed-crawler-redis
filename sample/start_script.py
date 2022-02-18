@@ -14,7 +14,8 @@ import json
 package_path = os.getcwd()
 project_name = os.path.basename(package_path)
 logfile_name = os.path.join(settings.logfile_dir, '%s.log' %project_name)
-logging.basicConfig(filename=logfile_name, level=logging.ERROR, format = '%(asctime)s - %(levelname)s: %(message)s')
+logging.basicConfig(filename=logfile_name, level=logging.ERROR,  \
+                 format = '%(asctime)s - %(levelname)s: %(message)s')
 redis_conf = {
     'host': '127.0.0.1',
     'port': 7000,
@@ -76,5 +77,6 @@ if __name__ == '__main__':
     upload_script()
     queue_num = 2
     data_to_queue('./input.txt', queue_num = queue_num)
-    Publisher().start(project_name, worknum=3, queue_num=queue_num, pull_size=2)
+    Publisher().start(project_name, worknum=3,  \
+                 queue_num=queue_num, pull_size=2)
 

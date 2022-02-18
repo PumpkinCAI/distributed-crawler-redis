@@ -12,7 +12,11 @@ class PostgresqlBackend(object):
         self.conn = self.make_connection()
 
     def make_connection(self):
-        return psycopg2.connect(host=self.host, user=self.user, password=self.password, database=self.dbname, port=5432)
+        return psycopg2.connect(host=self.host, 
+                                user=self.user, 
+                                password=self.password, 
+                                database=self.dbname, 
+                                port=5432)
 
     def insert(self, db_table, item, data):
         sql = '''

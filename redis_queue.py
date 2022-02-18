@@ -53,7 +53,8 @@ class Queue(object):
         put_items(self.redis_client, self.redis_key, generator, push_size)
 
     def _push_multi_queue(self, generator, push_size):
-        put_items_to_multi_seq(self.redis_client, self.redis_key, generator, self.queue_num, push_size)
+        put_items_to_multi_seq(self.redis_client, self.redis_key,  \
+                             generator, self.queue_num, push_size)
 
 def network_safety():
     def wrap(func):
@@ -88,7 +89,8 @@ def put_items(redis_client, redis_key, generator, push_size=10000):
     pipe.execute()
 
 @network_safety()
-def put_items_to_multi_seq(redis_client, redis_key, generator, queue_num, push_size=10000):
+def put_items_to_multi_seq(redis_client, redis_key, generator, \
+                           queue_num, push_size=10000):
     i = 0
     pipe = redis_client.pipeline()
     for item in generator:

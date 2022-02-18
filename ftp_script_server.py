@@ -11,7 +11,7 @@ class FtpServer():
         self.ftp.set_debuglevel(0)
         self.ftp.connect(host, port)
         self.ftp.login(user, password)
-        logging.debug(self.ftp.getwelcome()) ##显示ftp服务器欢迎信息
+        logging.debug(self.ftp.getwelcome())
         self.bufsize = 1024
 
     def download_file(self, filename, local_dir='./', remote_dir = './'):
@@ -19,7 +19,7 @@ class FtpServer():
         local_path = os.path.join(local_dir, os.path.basename(filename))
         remote_path = os.path.join(remote_dir, os.path.basename(filename))
         file_handler = open(local_path,'wb')
-        self.ftp.retrbinary('RETR %s' % remote_path, file_handler.write, self.bufsize)#接收服务器上文件并写入本地文件
+        self.ftp.retrbinary('RETR %s' % remote_path, file_handler.write, self.bufsize)
         file_handler.close()
         logging.info('file downloaded')
         return open(local_path, 'rb').read()
@@ -29,7 +29,7 @@ class FtpServer():
         remote_path = os.path.join(remote_dir, os.path.basename(filename))
         logging.info('uploading file')
         file_handler = open(local_path,'rb')
-        self.ftp.storbinary('STOR %s' %remote_path, file_handler, self.bufsize)#上传文件
+        self.ftp.storbinary('STOR %s' %remote_path, file_handler, self.bufsize)
         file_handler.close()
         logging.info('file uploaded')
 
